@@ -69,27 +69,48 @@ namespace ApiCenar.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                try
+                {
                     await _IngredientesRepo.Adddto(dto);
                     return NoContent();
                 }
+                
+            catch
+            {
                 return StatusCode(500);
+
             }
+
+            }
+            return StatusCode(500);
+        }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> Update(int id, IngredientesDto dto)
         {
             if (ModelState.IsValid)
             {
-               if ( await _IngredientesRepo.Updatedto(id, dto) == null)
+                try
+                {
+                    if (await _IngredientesRepo.Updatedto(id, dto) == null)
+                    {
+                        return StatusCode(500);
+
+                    }
+                    else
+                    {
+                        return NoContent();
+                    }
+                }
+                catch
                 {
                     return StatusCode(500);
 
                 }
-                else { 
-                return NoContent();
-                }
             }
             return StatusCode(500);
+        }
+            
 
         }
 

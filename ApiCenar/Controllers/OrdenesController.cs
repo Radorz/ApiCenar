@@ -75,9 +75,16 @@ namespace ApiCenar.Controllers
         {
             if (ModelState.IsValid)
             {
+                try { 
                 await _OrdenesRepo.Adddto(dto);
                 return NoContent();
             }
+            catch
+            {
+                return StatusCode(500);
+
+            }
+        }
             return StatusCode(500);
         }
 
@@ -86,7 +93,9 @@ namespace ApiCenar.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (await _OrdenesRepo.Updatedto(id, dto) )
+                try
+                {
+                    if (await _OrdenesRepo.Updatedto(id, dto) )
                 {
                     return NoContent();
 
@@ -96,6 +105,12 @@ namespace ApiCenar.Controllers
                     return StatusCode(500);
                     }
             }
+            catch
+            {
+                return StatusCode(500);
+
+            }
+        }
             return StatusCode(500);
 
         }
@@ -104,7 +119,10 @@ namespace ApiCenar.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (await _OrdenesRepo.Deletedto(id))
+
+                try
+                {
+                    if (await _OrdenesRepo.Deletedto(id))
                 {
                     return NoContent();
 
@@ -112,6 +130,12 @@ namespace ApiCenar.Controllers
                 else
                 {
                     return StatusCode(500);
+                }
+                }
+                catch
+                {
+                    return StatusCode(500);
+
                 }
             }
             return StatusCode(500);

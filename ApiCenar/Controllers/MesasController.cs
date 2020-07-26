@@ -54,8 +54,18 @@ namespace ApiCenar.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _MesaRepo.Adddto(dto);
+                try
+                {
+                    await _MesaRepo.Adddto(dto);
                 return NoContent();
+            }
+
+                catch
+                {
+                    return StatusCode(500);
+
+                }
+
             }
             return StatusCode(500);
         }
@@ -86,14 +96,23 @@ namespace ApiCenar.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (await _MesaRepo.Updatedto(id, dto) == null)
+
+                try
+                {
+                    if (await _MesaRepo.Updatedto(id, dto) == null)
+                    {
+                        return StatusCode(500);
+
+                    }
+                    else
+                    {
+                        return NoContent();
+                    }
+                }
+                catch
                 {
                     return StatusCode(500);
 
-                }
-                else
-                {
-                    return NoContent();
                 }
             }
             return StatusCode(500);
@@ -104,7 +123,9 @@ namespace ApiCenar.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (await _MesaRepo.ChangeStatusdto(id, estado))
+                try
+                {
+                    if (await _MesaRepo.ChangeStatusdto(id, estado))
                 {
                     return NoContent();
                     
@@ -113,6 +134,12 @@ namespace ApiCenar.Controllers
                 else
                 {
                     return StatusCode(500);
+                    }
+                }
+                catch
+                {
+                    return StatusCode(500);
+
                 }
             }
             return StatusCode(500);

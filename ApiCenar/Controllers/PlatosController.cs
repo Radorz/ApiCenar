@@ -73,8 +73,18 @@ namespace ApiCenar.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _PlatosRepo.Adddto(dto);
-                return NoContent();
+                try
+                {
+                    await _PlatosRepo.Adddto(dto);
+                    return NoContent();
+                }
+
+                catch
+                {
+                    return StatusCode(500);
+
+                }
+
             }
             return StatusCode(500);
         }
@@ -84,7 +94,9 @@ namespace ApiCenar.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (await _PlatosRepo.Updatedto(id, dto) == null)
+                try
+                {
+                    if (await _PlatosRepo.Updatedto(id, dto) == null)
                 {
                     return StatusCode(500);
 
@@ -94,9 +106,16 @@ namespace ApiCenar.Controllers
                     return NoContent();
                 }
             }
-            return StatusCode(500);
+            catch
+            {
+                return StatusCode(500);
+
+            }
 
         }
+            return StatusCode(500);
+
+    }
 
 
 
