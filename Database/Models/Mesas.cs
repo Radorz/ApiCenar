@@ -13,8 +13,9 @@ namespace Database.Models
         public int Id { get; set; }
         public int? Personas { get; set; }
         public string Descripcion { get; set; }
-        public string Estado { get; set; }
+        public int? Estado { get; set; }
 
+        public virtual TiposEstados EstadoNavigation { get; set; }
         public virtual ICollection<Ordenes> Ordenes { get; set; }
     }
 }

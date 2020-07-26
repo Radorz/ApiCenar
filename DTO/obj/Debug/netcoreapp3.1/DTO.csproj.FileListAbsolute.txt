@@ -7,3 +7,15 @@ C:\Users\luisi\source\repos\ApiCenar\DTO\obj\Debug\netcoreapp3.1\DTO.AssemblyInf
 C:\Users\luisi\source\repos\ApiCenar\DTO\obj\Debug\netcoreapp3.1\DTO.csproj.CoreCompileInputs.cache
 C:\Users\luisi\source\repos\ApiCenar\DTO\obj\Debug\netcoreapp3.1\DTO.dll
 C:\Users\luisi\source\repos\ApiCenar\DTO\obj\Debug\netcoreapp3.1\DTO.pdb
+C:\Users\User\Desktop\ApiCenar\DTO\bin\Debug\netcoreapp3.1\DTO.deps.json
+C:\Users\User\Desktop\ApiCenar\DTO\bin\Debug\netcoreapp3.1\DTO.dll
+C:\Users\User\Desktop\ApiCenar\DTO\bin\Debug\netcoreapp3.1\DTO.pdb
+C:\Users\User\Desktop\ApiCenar\DTO\obj\Debug\netcoreapp3.1\DTO.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\ApiCenar\DTO\obj\Debug\netcoreapp3.1\DTO.AssemblyInfo.cs
+C:\Users\User\Desktop\ApiCenar\DTO\obj\Debug\netcoreapp3.1\DTO.dll
+C:\Users\User\Desktop\ApiCenar\DTO\obj\Debug\netcoreapp3.1\DTO.pdb
+C:\Users\User\Desktop\ApiCenar\DTO\obj\Debug\netcoreapp3.1\DTO.csprojAssemblyReference.cache
+C:\Users\User\Desktop\ApiCenar\DTO\obj\Debug\netcoreapp3.1\DTO.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\ApiCenar\DTO\bin\Debug\netcoreapp3.1\Database.dll
+C:\Users\User\Desktop\ApiCenar\DTO\bin\Debug\netcoreapp3.1\Database.pdb
+C:\Users\User\Desktop\ApiCenar\DTO\obj\Debug\netcoreapp3.1\DTO.csproj.CopyComplete

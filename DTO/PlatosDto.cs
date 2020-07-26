@@ -13,12 +13,13 @@ namespace DTO
         public decimal Precio { get; set; }
         [Required(ErrorMessage = "Personas de Plato es requerido")]
         public int Personas { get; set; }
-        [Required(ErrorMessage = "Ingredientes de Plato es requerido")]
-
-        public List<IngredientesDto> Ingredientes { get; set; }
         [Required(ErrorMessage = "Categoria de Plato es requerido")]
 
         public string Categoria { get; set; }
+        [Required(ErrorMessage = "Ingredientes de Plato es requerido")]
+
+        public List<IngredientesDto> Ingredientes { get; set; }
+        
 
     }
 }

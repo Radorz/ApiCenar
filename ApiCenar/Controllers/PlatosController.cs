@@ -31,7 +31,7 @@ namespace ApiCenar.Controllers
                 {
 
 
-                    return NoContent();
+                    return NotFound();
 
                 }
                 else
@@ -40,7 +40,7 @@ namespace ApiCenar.Controllers
 
                 }
             }
-            catch
+            catch(Exception e)
             {
                 return StatusCode(500);
 
@@ -69,34 +69,34 @@ namespace ApiCenar.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(IngredientesDto dto)
+        public async Task<ActionResult> Create(PlatosDtoCU dto)
         {
             if (ModelState.IsValid)
             {
-                await _IngredientesRepo.Adddto(dto);
+                await _PlatosRepo.Adddto(dto);
                 return NoContent();
             }
             return StatusCode(500);
         }
 
-        //[HttpPut("{id}")]
-        //public async Task<ActionResult> Update(int id, IngredientesDto dto)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        if (await _IngredientesRepo.Updatedto(id, dto) == null)
-        //        {
-        //            return StatusCode(500);
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Update(int id, PlatosDtoCU dto)
+        {
+            if (ModelState.IsValid)
+            {
+                if (await _PlatosRepo.Updatedto(id, dto) == null)
+                {
+                    return StatusCode(500);
 
-        //        }
-        //        else
-        //        {
-        //            return NoContent();
-        //        }
-        //    }
-        //    return StatusCode(500);
+                }
+                else
+                {
+                    return NoContent();
+                }
+            }
+            return StatusCode(500);
 
-        //}
+        }
 
 
 

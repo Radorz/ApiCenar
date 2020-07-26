@@ -29,7 +29,7 @@ namespace ApiCenar.Controllers
                 if(lists==null){
 
 
-                    return NoContent();
+                    return NotFound();
 
                 }else { 
                 return lists;
@@ -65,15 +65,15 @@ namespace ApiCenar.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(IngredientesDto dto)
-        {
-            if (ModelState.IsValid)
+            public async Task<ActionResult> Create(IngredientesDto dto)
             {
-                await _IngredientesRepo.Adddto(dto);
-                return NoContent();
+                if (ModelState.IsValid)
+                {
+                    await _IngredientesRepo.Adddto(dto);
+                    return NoContent();
+                }
+                return StatusCode(500);
             }
-            return StatusCode(500);
-        }
 
         [HttpPut("{id}")]
         public async Task<ActionResult> Update(int id, IngredientesDto dto)

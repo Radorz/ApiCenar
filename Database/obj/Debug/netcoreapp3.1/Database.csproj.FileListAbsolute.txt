@@ -10,3 +10,15 @@ C:\Users\luisi\source\repos\ApiCenar\Database\obj\Debug\netcoreapp3.1\Database.c
 C:\Users\luisi\source\repos\ApiCenar\Database\obj\Debug\netcoreapp3.1\Database.dll
 C:\Users\luisi\source\repos\ApiCenar\Database\obj\Debug\netcoreapp3.1\Database.pdb
 C:\Users\luisi\source\repos\ApiCenar\Database\obj\Debug\netcoreapp3.1\Database.csprojAssemblyReference.cache
+C:\Users\User\Desktop\ApiCenar\Database\bin\Debug\netcoreapp3.1\Database.deps.json
+C:\Users\User\Desktop\ApiCenar\Database\bin\Debug\netcoreapp3.1\Database.runtimeconfig.json
+C:\Users\User\Desktop\ApiCenar\Database\bin\Debug\netcoreapp3.1\Database.runtimeconfig.dev.json
+C:\Users\User\Desktop\ApiCenar\Database\bin\Debug\netcoreapp3.1\Database.dll
+C:\Users\User\Desktop\ApiCenar\Database\bin\Debug\netcoreapp3.1\Database.pdb
+C:\Users\User\Desktop\ApiCenar\Database\obj\Debug\netcoreapp3.1\Database.AssemblyInfoInputs.cache
+C:\Users\User\Desktop\ApiCenar\Database\obj\Debug\netcoreapp3.1\Database.AssemblyInfo.cs
+C:\Users\User\Desktop\ApiCenar\Database\obj\Debug\netcoreapp3.1\Database.csproj.CoreCompileInputs.cache
+C:\Users\User\Desktop\ApiCenar\Database\obj\Debug\netcoreapp3.1\Database.dll
+C:\Users\User\Desktop\ApiCenar\Database\obj\Debug\netcoreapp3.1\Database.pdb
+C:\Users\User\Desktop\ApiCenar\Database\obj\Debug\netcoreapp3.1\Database.genruntimeconfig.cache
+C:\Users\User\Desktop\ApiCenar\Database\obj\Debug\netcoreapp3.1\Database.csprojAssemblyReference.cache

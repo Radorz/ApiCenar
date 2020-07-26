@@ -1,4 +1,5 @@
-﻿using Database.Models;
+﻿using AutoMapper;
+using Database.Models;
 using DTO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Conventions;
@@ -12,8 +13,11 @@ namespace Repository.Repository
 {
    public class IngredientesRepo : RepositoryBase<Ingredientes, ApiCenarContext>
     {
-        public IngredientesRepo(ApiCenarContext context) : base(context)
+        private readonly IMapper _mapper;
+
+        public IngredientesRepo(ApiCenarContext context, IMapper mapper) : base(context)
         {
+            _mapper = mapper;
 
         }
 
@@ -21,13 +25,11 @@ namespace Repository.Repository
         {
             var ingredientes = await _context.Ingredientes.ToListAsync();
             var Listdto = new List< IngredientesDto>();
-
+             
             foreach (var item in ingredientes)
             {
-                var dto = new IngredientesDto();
-
-                dto.id = item.Id;
-                dto.Nombre = item.Nombre.Trim();
+                var dto =_mapper.Map<IngredientesDto>(item);
+                dto.Nombre = dto.Nombre.Trim();
                 Listdto.Add(dto);
             }
             return Listdto;
@@ -35,8 +37,8 @@ namespace Repository.Repository
         }
         public async Task<IngredientesDto> Adddto(IngredientesDto entity)
         {
-            var item = new Ingredientes();
-            item.Nombre = entity.Nombre;
+            var item = _mapper.Map<Ingredientes>(entity);
+            item.Nombre = item.Nombre.Trim();
             _context.Set<Ingredientes>().Add(item);
             await _context.SaveChangesAsync();
             return entity;
@@ -49,10 +51,8 @@ namespace Repository.Repository
 
                 return null;
             }
-            var dto = new IngredientesDto();
-
-            dto.id = item.Id;
-            dto.Nombre = item.Nombre.Trim();
+            var dto = _mapper.Map<IngredientesDto>(item);
+            dto.Nombre = dto.Nombre.Trim();
             return dto;
         }
     

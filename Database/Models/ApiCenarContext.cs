@@ -21,13 +21,14 @@ namespace Database.Models
         public virtual DbSet<OrdenPlatos> OrdenPlatos { get; set; }
         public virtual DbSet<Ordenes> Ordenes { get; set; }
         public virtual DbSet<Platos> Platos { get; set; }
+        public virtual DbSet<TiposEstados> TiposEstados { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Server=DESKTOP-5VA8VTG\\MSSQLSERVER01; Database = ApiCenar; persist security info = True; Integrated Security = SSPI;");
+                optionsBuilder.UseSqlServer("Server=DESKTOP-DJ6VOP6\\SQLEXPRESS; Database = ApiCenar; persist security info = True; Integrated Security = SSPI;");
             }
         }
 
@@ -60,9 +61,10 @@ namespace Database.Models
                     .HasMaxLength(100)
                     .IsFixedLength();
 
-                entity.Property(e => e.Estado)
-                    .HasMaxLength(20)
-                    .IsFixedLength();
+                entity.HasOne(d => d.EstadoNavigation)
+                    .WithMany(p => p.Mesas)
+                    .HasForeignKey(d => d.Estado)
+                    .HasConstraintName("FK__Mesas__Estado__37A5467C");
             });
 
             modelBuilder.Entity<OrdenPlatos>(entity =>
@@ -103,6 +105,14 @@ namespace Database.Models
                     .IsFixedLength();
 
                 entity.Property(e => e.Precio).HasColumnType("decimal(19, 2)");
+            });
+
+            modelBuilder.Entity<TiposEstados>(entity =>
+            {
+                entity.Property(e => e.EstadoDesc)
+                    .IsRequired()
+                    .HasMaxLength(20)
+                    .IsFixedLength();
             });
 
             OnModelCreatingPartial(modelBuilder);
