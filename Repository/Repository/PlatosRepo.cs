@@ -7,13 +7,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using AutoMapper;
 namespace Repository.Repository
 {
     public class PlatosRepo : RepositoryBase<Platos, ApiCenarContext>
     {
-        public PlatosRepo(ApiCenarContext context) : base(context)
+        private readonly IMapper _mapper;
+
+        public PlatosRepo(ApiCenarContext context, IMapper mapper) : base(context)
         {
+            _mapper = mapper;
 
         }
 
@@ -29,15 +32,11 @@ namespace Repository.Repository
 
             foreach (var item in platos)
             {
-                var dto = new PlatosDto();
                 var ingredientesid = await _context.IngredientesPlato.Where(a => a.IdPlato == item.Id).ToListAsync();
                 var Listingredientes = new List<IngredientesDto>();
 
-
-                dto.id = item.Id;
-                dto.Nombre = item.Nombre.Trim();
-                dto.Precio = item.Precio.GetValueOrDefault();
-                dto.Personas = item.Personas.GetValueOrDefault();
+                var dto = _mapper.Map<PlatosDto>(item);
+                dto.Nombre = dto.Nombre.Trim();
                 foreach (var ingredientes in ingredientesid)
                 {
                     var ingrediente = await _context.Ingredientes.FirstOrDefaultAsync(a => a.Id == ingredientes.IdIngrediente);
@@ -49,7 +48,7 @@ namespace Repository.Repository
 
                 }
                 dto.Ingredientes = Listingredientes;
-                dto.Categoria = item.Categoria.Trim();
+                dto.Categoria = dto.Categoria.Trim();
 
 
 
@@ -66,15 +65,11 @@ namespace Repository.Repository
             {
                 return null;
             }
-            var dto = new PlatosDto();
                 var ingredientesid = await _context.IngredientesPlato.Where(a => a.IdPlato == platos.Id).ToListAsync();
                 var Listingredientes = new List<IngredientesDto>();
-
-
-                dto.id = platos.Id;
+            var dto = _mapper.Map<PlatosDto>(platos);
                 dto.Nombre = platos.Nombre.Trim();
-                dto.Precio = platos.Precio.GetValueOrDefault();
-                dto.Personas = platos.Personas.GetValueOrDefault();
+               
                 foreach (var ingredientes in ingredientesid)
                 {
                     var ingrediente = await _context.Ingredientes.FirstOrDefaultAsync(a => a.Id == ingredientes.IdIngrediente);
@@ -86,18 +81,14 @@ namespace Repository.Repository
 
                 }
                 dto.Ingredientes = Listingredientes;
-                dto.Categoria = platos.Categoria.Trim();
+                dto.Categoria = dto.Categoria.Trim();
 
             return dto;
 
         }
         public async Task<bool> Adddto(PlatosDtoCU entity)
         {
-            var item = new Platos();
-            item.Nombre = entity.Nombre;
-            item.Precio = entity.Precio;
-            item.Categoria = entity.Categoria;
-            item.Personas = entity.Personas;
+            var item = _mapper.Map<Platos>(entity);
 
             _context.Set<Platos>().Add(item);
             await _context.SaveChangesAsync();
@@ -130,10 +121,9 @@ namespace Repository.Repository
 
                 return null;
             }
-            item.Nombre = dto.Nombre;
-            item.Precio = dto.Precio;
-            item.Categoria = dto.Categoria;
-            item.Personas = dto.Personas;
+             item = _mapper.Map<Platos>(dto);
+
+            
             var ingredientes = await _context.IngredientesPlato.Where(a => a.IdPlato == id).ToListAsync();
 
             foreach(var ing in ingredientes){
@@ -177,15 +167,12 @@ namespace Repository.Repository
                 {
                     return null;
                 }
-                var dto = new PlatosDto();
                 var ingredientesid = await _context.IngredientesPlato.Where(a => a.IdPlato == platos.Id).ToListAsync();
                 var Listingredientes = new List<IngredientesDto>();
+                var dto = _mapper.Map<PlatosDto>(platos);
 
-
-                dto.id = platos.Id;
                 dto.Nombre = platos.Nombre.Trim();
-                dto.Precio = platos.Precio.GetValueOrDefault();
-                dto.Personas = platos.Personas.GetValueOrDefault();
+
                 foreach (var ingredientes in ingredientesid)
                 {
                     var ingrediente = await _context.Ingredientes.FirstOrDefaultAsync(a => a.Id == ingredientes.IdIngrediente);
@@ -197,7 +184,7 @@ namespace Repository.Repository
 
                 }
                 dto.Ingredientes = Listingredientes;
-                dto.Categoria = platos.Categoria.Trim();
+                dto.Categoria = dto.Categoria.Trim();
 
 
 

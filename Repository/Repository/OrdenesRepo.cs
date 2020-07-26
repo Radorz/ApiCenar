@@ -53,10 +53,7 @@ namespace Repository.Repository
         }
         public async Task<bool> Adddto(OrdenesDtoCreate entity)
         {
-            var item = _mapper.Map<OrdenesDto>(item);
-
-            var item = new Ordenes();
-            item.IdMesa = entity.IdMesa;
+            var item = _mapper.Map<Ordenes>(entity);
             item.Estado = "Proceso";
             item.Subtotal = 0;
             _context.Set<Ordenes>().Add(item);
@@ -180,11 +177,9 @@ namespace Repository.Repository
 
             foreach (var item in Ordenes)
             {
-                var dto = new OrdenesDto();
+                var dto = _mapper.Map<OrdenesDto>(item);
 
-                dto.Id = item.Id;
-                dto.IdMesa = item.IdMesa;
-                dto.Estado = item.Estado.Trim();
+                dto.Estado = dto.Estado.Trim();
                 dto.Subtotal = 0;
 
                 var platosids = await _context.OrdenPlatos.Where(a => a.IdOrden == item.Id).Select(a => a.IdPlato.GetValueOrDefault()).ToListAsync();

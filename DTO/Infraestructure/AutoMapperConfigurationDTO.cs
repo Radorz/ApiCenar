@@ -14,6 +14,8 @@ namespace DTO.Infraestructure
             IngredientesConfiguration();
             MesasConfiguration();
             OrdenesConfiguration();
+            PlatosConfiguration();
+            Platos2Configuration()
         }
         private void IngredientesConfiguration()
         {
@@ -30,6 +32,16 @@ namespace DTO.Infraestructure
         private void OrdenesConfiguration()
         {
             CreateMap<OrdenesDto, Ordenes>().ReverseMap().ForMember(dest => dest.OrdenPlatos, opt => opt.Ignore());
+
+        }
+        private void PlatosConfiguration()
+        {
+            CreateMap<PlatosDto, Platos>().ReverseMap().ForMember(dest => dest.Ingredientes, opt => opt.Ignore());
+
+        }
+        private void Platos2Configuration()
+        {
+            CreateMap<PlatosDtoCU, Platos>().ReverseMap().ForMember(dest => dest.Ingredientes, opt => opt.Ignore());
 
         }
 
