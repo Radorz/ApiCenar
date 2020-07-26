@@ -15,7 +15,7 @@ namespace DTO.Infraestructure
             MesasConfiguration();
             OrdenesConfiguration();
             PlatosConfiguration();
-            Platos2Configuration()
+            Platos2Configuration();
         }
         private void IngredientesConfiguration()
         {
