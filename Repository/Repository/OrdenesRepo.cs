@@ -123,7 +123,7 @@ namespace Repository.Repository
             }
             foreach (var ids in dto.OrdenPlatos)
             {
-                if (await _context.Platos.FindAsync(id) != null)
+                if (await _context.Platos.FindAsync(ids) != null)
                 {
                     var plato = new OrdenPlatos();
                     plato.IdOrden = item.Id;
@@ -168,7 +168,7 @@ namespace Repository.Repository
             }
             var Ordenes = await _context.Ordenes.Where(a => a.IdMesa == id).ToListAsync();
 
-            if (Ordenes == null)
+            if (Ordenes.Count() == 0)
             {
 
                 return null;

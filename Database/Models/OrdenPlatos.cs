@@ -9,7 +9,6 @@ namespace Database.Models
         public int? IdPlato { get; set; }
         public int? IdOrden { get; set; }
 
-        public virtual Ordenes IdOrdenNavigation { get; set; }
         public virtual Platos IdPlatoNavigation { get; set; }
     }
 }

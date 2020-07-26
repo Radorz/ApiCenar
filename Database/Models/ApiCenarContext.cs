@@ -69,10 +69,7 @@ namespace Database.Models
 
             modelBuilder.Entity<OrdenPlatos>(entity =>
             {
-                entity.HasOne(d => d.IdOrdenNavigation)
-                    .WithMany(p => p.OrdenPlatos)
-                    .HasForeignKey(d => d.IdOrden)
-                    .HasConstraintName("FK_OrdenPlatos_Ordenes");
+               
 
                 entity.HasOne(d => d.IdPlatoNavigation)
                     .WithMany(p => p.OrdenPlatos)

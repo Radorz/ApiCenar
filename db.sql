@@ -181,4 +181,25 @@ CREATE TABLE [dbo].[TiposEstados](
 ) ON [PRIMARY]
 GO
 
+INSERT INTO [dbo].[TiposEstados]
+           ([EstadoDesc])
+     VALUES
+           ('Disponible')
+GO
+  USE [ApiCenar]
+GO
+
+INSERT INTO [dbo].[TiposEstados]
+           ([EstadoDesc])
+     VALUES
+           ('en proceso atención')
+GO
+  USE [ApiCenar]
+GO
+
+INSERT INTO [dbo].[TiposEstados]
+           ([EstadoDesc])
+     VALUES
+           ('Atendida')
+GO
 

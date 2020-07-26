@@ -121,9 +121,12 @@ namespace Repository.Repository
 
                 return null;
             }
-             item = _mapper.Map<Platos>(dto);
+            item.Nombre = dto.Nombre;
+            item.Precio = dto.Precio;
+            item.Categoria = dto.Categoria;
+            item.Personas = dto.Personas;
 
-            
+
             var ingredientes = await _context.IngredientesPlato.Where(a => a.IdPlato == id).ToListAsync();
 
             foreach(var ing in ingredientes){
@@ -146,8 +149,7 @@ namespace Repository.Repository
 
                 }
 
-
-                _context.Entry(item).State = EntityState.Modified;
+                 _context.Update(item);
             await _context.SaveChangesAsync();
             
             }
